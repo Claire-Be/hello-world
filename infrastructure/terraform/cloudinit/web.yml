@@ -1,0 +1,10 @@
+#cloud-config
+users:
+  - name: bootstrap
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK3GG+lA6Wm7XOk0hEgsip7qyNii/FWNO1YIlutbo4nA
+
+packages:
+  - python3
+  - python3-pip
+  - ansible
