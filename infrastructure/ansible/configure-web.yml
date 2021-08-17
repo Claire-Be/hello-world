@@ -1,0 +1,41 @@
+---
+- hosts: web
+  become: yes
+  gather_facts: no
+  serial: 1
+  vars:
+    app_port: 8080
+    app_host: 0.0.0.0
+    app_dir: '/app/python/hello-world'
+  tasks:
+    ### Install requisite Python packages
+    - name: Install FastAPI
+      pip:
+        name: fastapi
+        state: present
+
+    - name: Install Uvicorn
+      pip:
+        name: uvicorn
+        state: present
+    ## Create our Uvicorn service
+    - name: Deploy Uvicorn systemd unit
+      template:
+        src: uvicorn.j2
+        dest: /usr/lib/systemd/system/uvicorn.service
+      notify:
+        - restart-uvicorn
+    ## Start uvicorn service  
+    - name: Start Uvicorn
+      systemd:
+        name: uvicorn
+        state: started
+        enabled: True
+        daemon-reload: True
+  handlers:
+    - name: restart-uvicorn
+      service: uvicorn
+        state: restarted
+        enabled: True
+        daemon-reload: True
+      

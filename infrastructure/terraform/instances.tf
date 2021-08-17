@@ -5,7 +5,9 @@ resource "aws_instance" "orchestrate" {
   user_data                   = file("cloudinit/orchestrate.yml")
   subnet_id                   = aws_subnet.sub_pub_1.id
   vpc_security_group_ids      = [aws_security_group.ssh_sg.id]
-
+  tags = {
+    Name = join("", ["orchestrator-1", "-", var.region])
+  }
 }
 
 resource "aws_instance" "web_1" {
@@ -15,6 +17,9 @@ resource "aws_instance" "web_1" {
   user_data                   = file("cloudinit/web.yml")
   subnet_id                   = aws_subnet.sub_priv_1.id
   vpc_security_group_ids      = [aws_security_group.service_web_sg.id]
+  tags = {
+    Name = join("", ["web-1", "-", var.region])
+  }
 }
 
 resource "aws_instance" "web_2" {
@@ -24,4 +29,7 @@ resource "aws_instance" "web_2" {
   user_data                   = file("cloudinit/web.yml")
   subnet_id                   = aws_subnet.sub_priv_2.id
   vpc_security_group_ids      = [aws_security_group.service_web_sg.id]
+  tags = {
+    Name = join("", ["web-2", "-", var.region])
+  }
 }

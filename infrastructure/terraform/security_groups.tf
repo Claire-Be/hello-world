@@ -13,7 +13,7 @@ resource "aws_security_group" "lb_web_sg" {
   egress {
     from_port   = 0
     to_port     = 0
-    protocol    = "TCP"
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
@@ -40,7 +40,7 @@ resource "aws_security_group" "service_web_sg" {
   egress {
     from_port   = 0
     to_port     = 0
-    protocol    = "TCP"
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 }

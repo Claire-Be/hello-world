@@ -3,6 +3,8 @@ users:
   - name: cbeamer
     ssh_authorized_keys:
       - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK3GG+lA6Wm7XOk0hEgsip7qyNii/FWNO1YIlutbo4nA
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
 
 packages:
   - python3
@@ -12,3 +14,4 @@ packages:
 
 runcmd:
   - mkdir -p /app/python && cd /app/python && git clone https://github.com/Claire-Be/hello-world.git
+  - cd /app/python/hello-world/infrastructure/ansible/

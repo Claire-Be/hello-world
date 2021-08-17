@@ -5,6 +5,9 @@ resource "aws_route_table" "igw" {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.helloworld.id
   }
+  tags = {
+    Name = "cbeamer-igw"
+  }
 }
 
 ## Private subnet route
@@ -13,5 +16,8 @@ resource "aws_route_table" "ngw" {
   route {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_nat_gateway.helloworld.id
+  }
+  tags = {
+    Name = "cbeamer-ngw"
   }
 }

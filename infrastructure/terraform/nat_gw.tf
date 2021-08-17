@@ -4,4 +4,5 @@ resource "aws_nat_gateway" "helloworld" {
   tags = {
     Name = "helloworld_ngw"
   }
+  depends_on = [aws_internet_gateway.helloworld]
 }

@@ -1,0 +1,9 @@
+[Unit]
+Description=Uvicorn service running FastAPI
+
+[Service]
+ExecStart=uvicorn helloworld:api --app-dir {{app_directory}} --port {{app_port}} --host {{app_host}}
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
