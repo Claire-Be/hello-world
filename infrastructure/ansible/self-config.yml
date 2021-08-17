@@ -1,0 +1,18 @@
+- hosts: localhost
+  become: yes
+  vars:
+    target_hosts: |
+      [web]
+      web-1.dev.private
+      web-2.dev.private
+  tasks:
+    - name: Update /etc/ansible/hosts
+      blockinfile:
+        path: /etc/ansible/hosts
+        block: |
+          {{target_hosts}}
+    - name: Update /etc/ansible/ansible.cfg
+      lineinfile:
+        path: /etc/ansible/ansible.cfg
+        line: 'host_key_checking = False'
+        regex: '^#host_key_checking\ =\ False'
