@@ -6,7 +6,7 @@
   vars:
     app_port: 8080
     app_host: 0.0.0.0
-    app_dir: '/app/python/hello-world'
+    app_directory: '/app/python/hello-world'
   tasks:
     ### Install requisite Python packages
     - name: Install FastAPI
