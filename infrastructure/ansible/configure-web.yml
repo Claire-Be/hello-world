@@ -34,8 +34,9 @@
         daemon-reload: True
   handlers:
     - name: restart-uvicorn
-      service: uvicorn
+      systemd:
         state: restarted
         enabled: True
         daemon-reload: True
-      
+      listen:
+        - restart-uvicorn
