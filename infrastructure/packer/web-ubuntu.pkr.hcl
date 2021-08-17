@@ -13,7 +13,7 @@ source "amazon-ebs" "ubuntu" {
   region        = "us-west-2"
   source_ami_filter {
     filters = {
-      name                = "ubuntu/images/*ubuntu-xenial-20.04-amd64-server-*"
+      name                = "ubuntu/images/*ubuntu-focal-20.04-amd64-server-*"
       root-device-type    = "ebs"
       virtualization-type = "hvm"
     }
@@ -30,14 +30,14 @@ build {
   ]
   ## 
   provisioner "shell" {
-    inline [
+    inline = [
         "apt-get -y update",
         "apt-get -y install python3 python3-pip ansible",
         "pip3 install fastapi uvicorn",
         "mkdir -p /app",
-        "git clone git@github.com:claire-bea/hello-world"
+        "git clone https://github.com/Claire-Bea/hello-world"
     ]
-    environment_vars [
+    environment_vars = [
         "DEBIAN_FRONTEND=noninteractive"
     ]
   }
