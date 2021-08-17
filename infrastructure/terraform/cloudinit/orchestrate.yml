@@ -14,3 +14,5 @@ packages:
 
 runcmd:
   - mkdir -p /app/python && cd /app/python && git clone https://github.com/Claire-Be/hello-world.git
+  - echo "[web]\nweb-1.dev.private\nweb-2.dev.private" >> /etc/ansible/hosts
+  - sed -i s/#host_key_checking\ =\ False/host_key_checking\ =\ False/ /etc/ansible/ansible.cfg

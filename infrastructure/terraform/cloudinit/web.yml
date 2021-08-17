@@ -9,9 +9,6 @@ users:
 packages:
   - python3
   - python3-pip
-  - ansible
-  - git
 
 runcmd:
-  - mkdir -p /app/python && cd /app/python && git clone https://github.com/Claire-Be/hello-world.git
-  - cd /app/python/hello-world/infrastructure/ansible/
+  - mkdir -p /app/python
