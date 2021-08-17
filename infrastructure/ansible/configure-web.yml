@@ -35,6 +35,7 @@
   handlers:
     - name: restart-uvicorn
       systemd:
+        name: uvicorn
         state: restarted
         enabled: True
         daemon-reload: True
