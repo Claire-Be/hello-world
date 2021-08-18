@@ -6,7 +6,7 @@
   vars:
     app_port: 8080
     app_host: '0.0.0.0'
-    app_directory: '/app/python/hello-world'
+    app_directory: '/app/python/'
   tasks:
     - name: Wait for hosts to become available
       wait_for_connection:
