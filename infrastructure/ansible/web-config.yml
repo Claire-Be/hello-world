@@ -20,11 +20,14 @@
         dest: /app/python/
         mode: 0755
     ### Install requisite Python packages
+    - name: Install pip3
+      apt:
+        name: python3-pip
+        state: present
     - name: Install FastAPI
       pip:
         name: fastapi
         state: present
-
     - name: Install Uvicorn
       pip:
         name: uvicorn

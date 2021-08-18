@@ -16,6 +16,8 @@ resource "aws_instance" "orchestrate" {
       host = aws_instance.orchestrate.public_ip
     }
   }
+  depends_on = [aws_route53_record.web_1,
+                aws_route53_record.web_2]
 }
 
 resource "aws_instance" "web_1" {
