@@ -19,7 +19,6 @@
         src: /app/python/hello-world/helloworld.py
         dest: /app/python/
         mode: 0755
-        state: present
     ### Install requisite Python packages
     - name: Install FastAPI
       pip:
