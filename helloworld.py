@@ -6,10 +6,13 @@ try:
     soft_version = env['HELLOWORLD_RELEASE_VERSION']
 except KeyError:
     soft_version = "unknown"
-    
+
 hostname = gethostname()
 
 api = FastAPI()
+@api.get('/')
+def response():
+    return {"moo": True}
 
 @api.get('/helloworld/{name}')
 def response(name):
@@ -19,3 +22,7 @@ def response(name):
 def response():
     return {"hostname": hostname,
             "version": soft_version}
+
+@api.get('/healtcheck')
+def response():
+    return {"moo": True}
