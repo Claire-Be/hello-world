@@ -6,6 +6,7 @@ try:
     soft_version = env['HELLOWORLD_RELEASE_VERSION']
 except KeyError:
     soft_version = "unknown"
+    
 hostname = gethostname()
 
 api = FastAPI()
