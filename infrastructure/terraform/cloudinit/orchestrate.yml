@@ -1,8 +1,8 @@
 #cloud-config
 users:
-  - name: cbeamer
+  - name: ${remote_user}
     ssh_authorized_keys:
-      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK3GG+lA6Wm7XOk0hEgsip7qyNii/FWNO1YIlutbo4nA
+      - ${ssh_pub_key}
     sudo: ALL=(ALL) NOPASSWD:ALL
     shell: /bin/bash
 
@@ -13,6 +13,6 @@ packages:
   - ansible
 
 runcmd:
-  - mkdir -p /app/python && cd /app/python && git clone https://github.com/Claire-Be/hello-world.git
+  - mkdir -p /app/python && cd /app/python && git clone ${app_repo}
   - chown -R cbeamer /app/python/hello-world
   #- cd /app/python/hello-world/infrastructure/ansible/ && ansible-playbook self-config.yml
