@@ -2,6 +2,10 @@ variable "region" {
   default = "us-west-2"
 }
 
+variable "remote_user" {
+  default = "cbeamer"
+}
+
 variable "vpc_cidr_block" {
   default = "10.14.0.0/16"
 }

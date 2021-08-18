@@ -8,6 +8,16 @@ resource "aws_instance" "orchestrate" {
   tags = {
     Name = join("", ["orchestrator-1", "-", var.region])
   }
+  provisioner "remote-exec" {
+    inline = [
+      "ansible-playbook /app/python/hello-world/infrastructure/ansible/web-config"
+    ]
+    connection {
+      type = "ssh"
+      user = var.remote_user
+      host = aws_instance.orchestrate.public_ip
+    }
+  }
 }
 
 resource "aws_instance" "web_1" {
