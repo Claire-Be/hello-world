@@ -9,9 +9,7 @@ resource "aws_instance" "orchestrate" {
     Name = join("", ["orchestrator-1", "-", var.region])
   }
   provisioner "remote-exec" {
-    inline = [
-      "ansible-playbook /app/python/hello-world/infrastructure/ansible/web-config"
-    ]
+    script = "bootstrap.sh"
     connection {
       type = "ssh"
       user = var.remote_user

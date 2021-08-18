@@ -9,8 +9,9 @@ users:
 packages:
   - python3
   - python3-pip
+  - git
+  - ansible
 
 runcmd:
-  #- mkdir -p /app/python && cd /app/python && git clone https://github.com/Claire-Be/hello-world.git
+  - mkdir -p /app/python && cd /app/python && git clone https://github.com/Claire-Be/hello-world.git
   #- cd /app/python/hello-world/infrastructure/ansible/ && ansible-playbook self-config.yml
-  #- cd /app/python/hello-world/infrastructure/ansible/ && ansible-playbook web-config.yml
