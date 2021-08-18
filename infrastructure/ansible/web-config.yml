@@ -5,10 +5,16 @@
   serial: 1
   vars:
     app_port: 8080
-    app_host: 0.0.0.0
+    app_host: '0.0.0.0'
     app_directory: '/app/python/hello-world'
   tasks:
-    - name: Sync reppo
+    - name: Wait for hosts to become available
+      wait_for_connection:
+        delay: 30
+        timeout: 900
+        sleep: 5
+        connect_timeout: 5
+    - name: Sync application
       copy:
         src: /app/python/hello-world/helloworld.py
         dest: /app/python/
